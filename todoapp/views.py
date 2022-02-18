@@ -3,6 +3,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .models import TodoListItem
 
+def home(request):
+    return render(request,'Home.html',locals())
+
 def todoappVeiw(request):
     all_todo_items=TodoListItem.objects.all()
     return render(request,'todolist.html',{'all_items':all_todo_items})
