@@ -1,6 +1,16 @@
 # Project_TodoList
 
-# 功能介紹
+
+#　介紹
+所用到的技術:
+<ul>
+  <li>程式語言: Python、HTML/CSS</li>
+  <li>框架: Django</li>
+  <li>資料庫: SQLite</li>
+  <li>版本控制: Git</li>
+</ul>
+
+# 功能
 <ul>
  <li>目前TODO事項列表</li>
  <li>新增TODO事項</li>
@@ -9,9 +19,10 @@
  <li>修改TODO事項內容</li>
 </ul> 
 
+
 # 啟動
 ```
-$git clone https://github.com/walkman811205/todoproject.git
+$git clone git@github.com:walkman811205/todoproject.git
 $cd todoproject
 ```
 建立虛擬環境並啟動
