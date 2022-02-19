@@ -11,5 +11,20 @@
 
 # 啟動
 ```
-$git clone 
+$git clone https://github.com/walkman811205/todoproject.git
+$cd todoproject
+```
+建立虛擬環境並啟動
+```
+python -m venv venv
+source ./venv/Scripts/activate
+```
+下載依賴套件
+```
+pip install -r requirements.txt
+```
+啟動django
+```
+python manage.py runserver
+開啟瀏覽器輸入 127.0.0.1:8000 
 ```
