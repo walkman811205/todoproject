@@ -1,0 +1,13 @@
+{% extends 'todoapp/main.html' %}
+{% block content %}
+
+<a href="{% url 'tasks' %}">返回</a>
+
+<form method="POST">
+    {%csrf_token%}
+    <p>你確定要刪除嗎? "{{task}}"</p>
+
+    <input type="submit" value="確定刪除"/>
+</form>
+
+{% endblock content %}

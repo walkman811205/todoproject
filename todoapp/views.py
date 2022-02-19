@@ -1,22 +1,35 @@
-import re
+from dataclasses import field
+from multiprocessing import context
+from statistics import mode
 from django.http import HttpResponse, HttpResponseRedirect
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from django.shortcuts import render
-from .models import TodoListItem
+from .models import Task
 
-def home(request):
-    return render(request,'Home.html',locals())
+class TaskList(ListView):
+    model = Task
+    context_object_name = 'tasks'
 
-def todoappVeiw(request):
-    all_todo_items=TodoListItem.objects.all()
-    return render(request,'todolist.html',{'all_items':all_todo_items})
+class TaskDetail(DetailView):
+    model = Task
+    context_object_name = 'task'
+    template_name = 'todoapp/task.html'
 
-def addTodoVeiw(reguest):
-    x = reguest.POST['content']
-    new_items = TodoListItem(content=x)
-    new_items.save()
-    return HttpResponseRedirect('/todoapp/')
+class TaskCreate(CreateView):
+    model = Task
+    fields = ['title', 'content', 'complete']
+    success_url = reverse_lazy('tasks')
 
-def deleteTodoVeiw(request,i):
-    y = TodoListItem.objects.get(id=i)
-    y.delete()
-    return HttpResponseRedirect('/todoapp/') 
+class TaskUpdate(UpdateView):
+    model = Task    
+    fields = '__all__'
+    success_url = reverse_lazy('tasks')
+
+class DeleteView(DeleteView):
+    model = Task
+    context_object_name = 'task'
+    success_url = reverse_lazy('tasks')
+

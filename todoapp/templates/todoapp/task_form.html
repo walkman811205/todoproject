@@ -1,0 +1,13 @@
+{% extends 'todoapp/main.html' %}
+{% block content %}
+
+<h3>事件內容</h3>
+<a href="{% url 'tasks' %}">返回</a>
+
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="送出">
+</form>
+
+{% endblock content %}
